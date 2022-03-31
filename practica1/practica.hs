@@ -91,3 +91,41 @@ siguiente Sur = Oeste
 -- último es domingo. Luego implementar las 
 -- siguientes funciones:
 
+data DiaDeSemana = Lunes | 
+                   Martes | 
+                   Miercoles | 
+                   Jueves | 
+                   Viernes | 
+                   Sabado | 
+                   Domingo deriving Show
+
+
+-- Devuelve un par donde la primera componente es 
+-- el primer día de la semana, y la segunda 
+-- componente es el último día de la semana.
+
+primeroYUltimoDia :: (DiaDeSemana,DiaDeSemana) -> (DiaDeSemana,DiaDeSemana)
+primeroYUltimoDia (d1,d2) = (Lunes,Domingo)
+
+-- Dado un dia de la semana indica si 
+-- comienza con la letra M.
+
+empiezaConM :: DiaDeSemana -> Bool
+empiezaConM Martes = True
+empiezaConM Miercoles = True
+empiezaConM _ = False
+
+-- Dado dos dias de semana, indica si el 
+-- primero viene después que el segundo.
+
+-- vieneDespues :: DiaDeSemana -> DiaDeSemana 
+-- -> Bool
+-- Falta hacer
+
+-- Dado un dia de la semana indica si no 
+-- es ni el primer ni el ultimo dia.
+
+estaEnElMedio :: DiaDeSemana -> Bool
+estaEnElMedio Lunes = False
+estaEnElMedio Domingo = False
+estaEnElMedio _ = True
