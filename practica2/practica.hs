@@ -1,4 +1,4 @@
--- REcursion sobre listas .
+-- RECURSION SOBRE LISTAS .
 
 --1 - sumatoria
 sumatoria :: [Int]->Int
@@ -60,3 +60,42 @@ losMenoresA n [] =[]
 losMenoresA n (x:xs) =  if x < n 
                             then  x : losMenoresA n xs
                              else losMenoresA n xs
+
+--10 - lasDeLongitudMayorA
+
+lasDeLongitudMayorA :: Int -> [[a]] -> [[a]]
+lasDeLongitudMayorA n [] = []
+lasDeLongitudMayorA n (x:xs) =  if((longitud x) > n) then  x :  lasDeLongitudMayorA n xs else lasDeLongitudMayorA n xs
+
+-- 11 - agregarAlFinal
+
+agregarAlFinal :: [a] -> a -> [a]
+agregarAlFinal xs e = xs ++ [e]
+
+-- 12 - concatenar
+
+concatenar :: [a] -> [a] -> [a]
+concatenar l [] = l
+concatenar [] l = l
+concatenar (l:ls) xs =   l :  concatenar ls xs  
+
+-- 13 - reversa
+
+reversa :: [a] -> [a]
+reversa [] = []
+reversa (x:xs)=  agregarAlFinal (reversa xs ) x
+
+--14 -  zipMaximos
+
+zipMaximos :: [Int] -> [Int] -> [Int]
+zipMaximos [] xs = xs
+zipMaximos xs [] = xs
+zipMaximos (l:ls) (x:xs) =  max l x :   zipMaximos ls xs 
+
+-- 15 - elMinimo
+elMinimo :: Ord a => [a] -> a
+elMinimo [a] = a
+elMinimo (x:xs) = if x < elMinimo xs
+                     then x 
+                     else elMinimo xs 
+
