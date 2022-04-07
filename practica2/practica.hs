@@ -99,3 +99,23 @@ elMinimo (x:xs) = if x < elMinimo xs
                      then x 
                      else elMinimo xs 
 
+
+-- RECURSION SOBRE NUMEROS
+
+-- 1 - factorial
+factorial :: Int -> Int
+factorial 0 = 1
+factorial n =   n * factorial (n - 1)
+
+-- 2 - cuentaRegresiva
+cuentaRegresiva :: Int -> [Int]
+cuentaRegresiva  0 = []
+cuentaRegresiva  n =  n :  cuentaRegresiva (n-1)
+
+-- 3 - repetir
+repetir :: Int -> a -> [a]
+repetir 1 e = 
+repetir n e =  n : repetir (n-1) e
+
+-- 4 - losPrimeros
+losPrimeros :: Int -> [a] -> [a]
