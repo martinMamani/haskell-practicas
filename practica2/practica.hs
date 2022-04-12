@@ -114,8 +114,8 @@ cuentaRegresiva  n =  n :  cuentaRegresiva (n-1)
 
 -- 3 - repetir
 repetir :: Int -> a -> [a]
-repetir 1 e = 
-repetir n e =  n : repetir (n-1) e
+repetir 1 e = [e]
+repetir n e =  e : repetir (n-1) e
 
 -- 4 - losPrimeros
-losPrimeros :: Int -> [a] -> [a]
+-- losPrimeros :: Int -> [a] -> [a]
