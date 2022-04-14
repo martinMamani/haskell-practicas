@@ -30,14 +30,21 @@ celda0= CeldaVacia
 celda1 = Bolita Azul CeldaVacia
 celda2 = Bolita Azul (Bolita Azul CeldaVacia)
 celda3 = Bolita Rojo (Bolita Azul (Bolita Rojo (Bolita Azul CeldaVacia)))
+-- 3 -
 -- sacar :: Color -> Celda -> Celda
 sacar :: Color -> Celda -> Celda
 sacar cl CeldaVacia = CeldaVacia
-sacar cl (Bolita co celda) = if esDeColor cl co 
-                                then celda
-                                else Bolita co (sacar cl celda)
-
--- ponerN :: Int -> Color -> Celda -> Celda
+sacar cl (Bolita co celda) = if sonDelMismoColor cl co 
+                            then celda
+                            else Bolita co (sacar cl celda)
 
 
+sonDelMismoColor :: Color -> Color -> Bool
+sonDelMismoColor Rojo Rojo = True
+sonDelMismoColor Azul Azul = True
+sonDelMismoColor _ _ = False
 
+-- 4 - 
+ponerN :: Int -> Color -> Celda -> Celda
+ponerN 0 cl celda = celda
+ponerN n cl celda = Bolita cl (ponerN (n-1) cl celda)
