@@ -113,9 +113,18 @@ cuentaRegresiva  0 = []
 cuentaRegresiva  n =  n :  cuentaRegresiva (n-1)
 
 -- 3 - repetir
-repetir :: Int -> a -> [a]
-repetir 1 e = [e]
-repetir n e =  e : repetir (n-1) e
+repetirA :: Int -> a -> [a]
+repetirA 0 e = []
+repetirA n e =  e : repetirA (n-1) e
 
 -- 4 - losPrimeros
--- losPrimeros :: Int -> [a] -> [a]
+losPrimeros :: Int -> [a] -> [a]
+losPrimeros 0 _ = []
+losPrimeros n [] = []  
+losPrimeros n (x:xs)=  x : losPrimeros(n-1) xs 
+
+-- 5 - sinLosPrimeros
+sinLosPrimeros :: Int -> [a]-> [a]
+sinLosPrimeros 0 ls = ls
+sinLosPrimeros n [] = []
+sinLosPrimeros n (x:xs) = sinLosPrimeros (n-1) xs      
