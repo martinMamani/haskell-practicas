@@ -92,3 +92,25 @@ pasosHastaTesoro (Cofre objetos c) = if hayAlgunTesoroEn objetos
 -- hayTesoroEn n Fin = 
 -- hayTesoroEn n (Nada c) = 
 -- hayTesoroEn n (Cofre objetos c) =      hayTesoroEn c 
+
+
+
+
+
+
+
+
+
+
+-- listPerLevel :: Tree a -> [[a]]
+-- listPerLevel EmptyT = []
+-- listPerLevel (NodeT v i r)= 
+--     [v]: zipConcat (listPerLevel i)
+--     (listPerLevel r)
+
+-- zipConcat :: [[a]]-> [[a]]-> [[a]]
+-- zipConcat [] [] = []
+-- zipConcat xs [] = xs
+-- zipConcat [] ys = ys
+-- zipConcat (x:xs) (y:ys) =
+-- (x++y): (zipConcat xs ys)
