@@ -55,10 +55,26 @@ esSalsa _ = False
 --Recorre cada ingrediente y si es aceitunas duplica su cantidad
 duplicarAceitunas :: Pizza -> Pizza
 duplicarAceitunas Prepizza = Prepizza
-duplicarAceitunas (Capa ing p ) =             if esAceituna ing 
-     then Capa ing (duplicarAceitunas p)
+duplicarAceitunas (Capa ing p ) = if esAceituna ing 
+     then Capa (duplicarAceituna ing) (duplicarAceitunas p)
      else duplicarAceitunas p
 
 esAceituna :: Ingrediente -> Bool
-esAceituna Aceitunas = True
+esAceituna (Aceitunas n)= True
 esAceituna _ = False
+
+duplicarAceituna :: Ingrediente -> Ingrediente
+duplicarAceituna (Aceitunas n ) = Aceitunas (n*2)
+
+
+-- Dada una lista de pizzas devuelve un par donde la primera componente es la cantidad de
+-- ingredientes de la pizza, y la respectiva pizza como segunda componente.
+
+cantCapasPorPizza :: [Pizza] -> [(Int,Pizza)]
+cantCapasPorPizza []      = []
+cantCapasPorPizza (pz:pzs) = (length(cantIngredientes pz),pz) : cantCapasPorPizza pzs
+
+
+cantIngredientes :: Pizza -> [Ingrediente]
+cantIngredientes Prepizza    = []
+cantIngredientes (Capa ing p)= ing : cantIngredientes p 
