@@ -77,4 +77,22 @@ cantCapasPorPizza (pz:pzs) = (length(cantIngredientes pz),pz) : cantCapasPorPizz
 
 cantIngredientes :: Pizza -> [Ingrediente]
 cantIngredientes Prepizza    = []
-cantIngredientes (Capa ing p)= ing : cantIngredientes p 
+cantIngredientes (Capa ing p)= ing : cantIngredientes p
+
+
+-- 2 - MAPA DE TESOROS (CON BIFURCACIONES)
+
+-- Un mapa de tesoros es un árbol con bifurcaciones que terminan en cofres. Cada bifurcación y
+-- cada cofre tiene un objeto, que puede ser chatarra o un tesoro.
+
+
+data Dir = Izq | Der deriving Show
+data Objeto = Tesoro | Chatarra deriving Show
+data Cofre = Cofre [Objeto] deriving Show
+data Mapa = Fin Cofre | Bifurcacion Cofre Mapa Mapa deriving Show
+
+camino0 = Fin (Cofre [] )
+camino1 = Fin (Cofre [Chatarra])
+camino2 = Fin (Cofre [Tesoro]) 
+camino3 = Bifurcacion  (Cofre []) (camino0) (camino0) 
+camino4 = Bifurcacion (Cofre [Tesoro])(camino1) (camino2)
