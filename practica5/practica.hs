@@ -1,4 +1,4 @@
-import Set
+import SetV1
 
 -- Cálculo de costos
 --O(1)
@@ -24,12 +24,12 @@ pertenece :: Eq a => a -> [a] -> Bool
 pertenece n [] = False
 pertenece n (x:xs) = n == x || pertenece n xs
 --O(n^2)
-sinRepetidos :: Eq a => [a] -> [a]
-sinRepetidos [] = []
-sinRepetidos (x:xs) =
-if pertenece x xs
-then sinRepetidos xs
-else x : sinRepetidos xs
+
+sinRepetidosA :: Eq a => [a] -> [a]
+sinRepetidosA [] = []
+sinRepetidosA (x:xs) = if pertenece x xs
+then sinRepetidosA xs
+else x : sinRepetidosA xs
 
 -- equivalente a (++)
 --O(n)
@@ -60,8 +60,7 @@ minimo (x:xs) = min x (minimo xs)
 --O(n)
 sacar :: Eq a => a -> [a] -> [a]
 sacar n [] = []
-sacar n (x:xs) =
-if n == x
+sacar n (x:xs) = if n == x
 then xs
 else x : sacar n xs
 --O(n)
@@ -70,7 +69,21 @@ ordenar [] = []
 orderar xs = let m = minimo xs in m : ordenar (sacar m xs)
 
 
-
+data Tree a = EmptyT | NodeT a (Tree a) (Tree a)
 -- Set (conjunto)
 
-
+--Dados una lista y un conjunto, devuelve una lista con todos los elementos que pertenecen
+--al conjunto.
+losQuePertenecen :: Eq a => [a] -> Set a -> [a]
+losQuePertenecen [] _ = [] 
+losQuePertenecen (x:xs) s = if belongs x s
+    then x : (losQuePertenecen xs s)
+    else (losQuePertenecen xs s)
+                              
+--Quita todos los elementos repetidos de la lista dada utilizando un conjunto como estructura auxiliar.
+sinRepetidos :: Eq a => [a] -> [a]
+sinRepetidos = undefined
+--Dado un arbol de conjuntos devuelve un conjunto con la union de todos los conjuntos
+--del arbol.
+unirTodos :: Eq a => Tree (Set a) -> Set a
+unirTodos = undefined
